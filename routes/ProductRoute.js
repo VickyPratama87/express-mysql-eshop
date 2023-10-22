@@ -11,6 +11,6 @@ router.post(`${baseURL}`, uploadOption.single('image'), authMiddleware, permissi
 router.get(`${baseURL}`, getProducts);
 router.get(`${baseURL}/:id`, getProductById);
 router.put(`${baseURL}/:id`, uploadOption.single('image'), authMiddleware, permissionUser('admin'), updateProduct);
-router.delete(`${baseURL}/:id`, authMiddleware, permissionUser('user'), deleteProduct);
+router.delete(`${baseURL}/:id`, authMiddleware, permissionUser('admin'), deleteProduct);
 
 module.exports = router;
