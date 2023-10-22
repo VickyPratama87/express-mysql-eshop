@@ -11,17 +11,18 @@ const addCategory = asyncHandler(async (req, res) => {
 
 		res.status(201).json({
 			status: 'Success',
+			message: 'Data successfully added',
 			data: newCategory,
 		});
 	} catch (error) {
-		return res.status(400).json({
+		return res.status(500).json({
 			status: 'Failed',
 			error: 'Server Down',
 		});
 	}
 });
 
-// Read All Category
+// Get All Category
 const getAllCategories = async (req, res) => {
 	try {
 		const categories = await Category.findAll();
@@ -30,14 +31,14 @@ const getAllCategories = async (req, res) => {
 			data: categories,
 		});
 	} catch (error) {
-		return res.status(400).json({
+		return res.status(500).json({
 			status: 'Failed',
 			error: 'Server Down',
 		});
 	}
 };
 
-// Read Category By Id
+// Get Category By Id
 const getCategoryById = async (req, res) => {
 	try {
 		const id = req.params.id;
@@ -53,7 +54,7 @@ const getCategoryById = async (req, res) => {
 		if (!category) {
 			return res.status(404).json({
 				status: 'Failed',
-				error: 'Id not found',
+				error: `Data with id ${id} not found`,
 			});
 		}
 
@@ -62,7 +63,7 @@ const getCategoryById = async (req, res) => {
 			data: category,
 		});
 	} catch (error) {
-		return res.status(400).json({
+		return res.status(500).json({
 			status: 'Failed',
 			error: 'Server Down',
 		});
@@ -87,10 +88,11 @@ const updateCategory = asyncHandler(async (req, res) => {
 
 		return res.status(200).json({
 			status: 'Success',
+			message: `Data with id ${id} successfully updated`,
 			data: newCategory,
 		});
 	} catch (error) {
-		return res.status(400).json({
+		return res.status(500).json({
 			status: 'Failed',
 			error: 'Server Down',
 		});
@@ -106,7 +108,7 @@ const deleteCategory = async (req, res) => {
 		if (!category) {
 			return res.status(404).json({
 				status: 'Failed',
-				error: 'Id not found',
+				error: `Data with id ${id} not found`,
 			});
 		}
 
@@ -118,10 +120,10 @@ const deleteCategory = async (req, res) => {
 
 		return res.status(200).json({
 			status: 'Success',
-			message: `Data with id ${id} success deleted`,
+			message: `Data with id ${id} successfully deleted`,
 		});
 	} catch (error) {
-		return res.status(400).json({
+		return res.status(500).json({
 			status: 'Failed',
 			error: 'Server Down',
 		});

@@ -34,8 +34,8 @@ const registerUser = async (req, res) => {
 		if (req.body.password != req.body.passwordConfirm) {
 			return res.status(400).json({
 				status: 'Failed',
-				message: 'Error Validation',
-				error: 'Password and Confirm Password not match',
+				message: 'Validation Error',
+				error: "Password and Password Confirm don't match",
 			});
 		}
 
@@ -62,8 +62,8 @@ const loginUser = async (req, res) => {
 	if (!req.body.email || !req.body.password) {
 		return res.status(400).json({
 			status: 'Failed',
-			message: 'Error Validation',
-			error: 'Please input your email or password',
+			message: 'Validation Error',
+			error: 'Email and Password cannot be empty',
 		});
 	}
 

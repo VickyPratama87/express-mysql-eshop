@@ -11,10 +11,10 @@ const averageDataProduct = async (idDataProduct) => {
 		},
 	});
 
-	const ratarata = Number(resReview.dataValues.average);
+	const average = Number(resReview.dataValues.average);
 	await Product.update(
 		{
-			avgReview: ratarata,
+			avgReview: average,
 		},
 		{
 			where: {

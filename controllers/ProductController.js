@@ -30,7 +30,7 @@ const addProduct = asyncHandler(async (req, res) => {
 	});
 });
 
-// Read All Product
+// Get All Product
 const getProducts = asyncHandler(async (req, res) => {
 	const { search, limit, page } = req.query;
 
@@ -76,7 +76,7 @@ const getProducts = asyncHandler(async (req, res) => {
 	});
 });
 
-// Read Product By Id
+// Get Product By Id
 const getProductById = asyncHandler(async (req, res) => {
 	const id = req.params.id;
 	const product = await Product.findByPk(id, {
